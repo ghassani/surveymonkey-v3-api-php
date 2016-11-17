@@ -167,7 +167,7 @@ class Client
 		$this->httpClient = new HttpClient([ 
 			'base_uri' => static::BASE_ENDPOINT,
 			'headers'  => [
-				'User-Agent'	=> 'ghassani/surveymonkey-v3-api-php'
+				'User-Agent'	=> 'ghassani/surveymonkey-v3-api-php',
 				'Content-Type'  => 'application/json',
 				'Authorization' => 'Bearer ' . $this->getAccessToken(),
 			]
