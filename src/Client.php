@@ -50,6 +50,7 @@ class Client
 	use Api\ContactTrait;
 	use Api\WebooksTrait;
 	use Api\BenchmarkTrait;
+	use Api\ErrorsTrait;
 
 	/**
 	* Constructor
