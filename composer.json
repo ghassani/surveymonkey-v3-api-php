@@ -6,6 +6,7 @@
             "email": "ghassani@gmail.com"
         }
     ],
+    "license": "GPL-3.0",
     "require": {
         "php": ">=5.5",
         "guzzlehttp/guzzle": "6.2.2"
