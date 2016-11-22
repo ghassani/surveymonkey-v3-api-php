@@ -29,7 +29,7 @@ class Client
 
 	/** @const string */
 	const BASE_ENDPOINT = 'https://api.surveymonkey.net/v3/';
-
+	
 	/** @var GuzzleHttp\Client */
 	protected $httpClient;
 
