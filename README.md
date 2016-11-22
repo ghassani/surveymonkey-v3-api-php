@@ -23,7 +23,7 @@ Add the following to your composer.json under require:
 
     $client->getSurveys([]);
 
-    Check out src/Api/*Trait.php for exposed methods in the Client class. Some additional usage examples in the incomplete test suite.
+Check out src/Api/*Trait.php for exposed methods in the Client class. Some additional usage examples in the incomplete test suite.
 
 # OAuth
 
