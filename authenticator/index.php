@@ -3,7 +3,7 @@
 require_once(dirname(__FILE__).'/../vendor/autoload.php');
 
 if (!file_exists(dirname(__FILE__).'/creds.php')) {
-	throw new \Exception(spritnf('Create a file named creds.php in this directory with the following constants defined: SM_CLIENT_ID, SM_CLIENT_SECRET'));
+	throw new \Exception(spritnf('Create a file named creds.php in this directory with the following constants defined: SM_CLIENT_ID, SM_CLIENT_SECRET and optionally SM_REDIRECT_URL'));
 }
 
 require_once(dirname(__FILE__).'/creds.php');
@@ -11,7 +11,10 @@ require_once(dirname(__FILE__).'/creds.php');
 use Spliced\SurveyMonkey\Authenticator;
 use Guzzle\Http\Client as HttpClient;
 
-define('SM_REDIRECT_URL', 'http://localhost:8080/index.php');
+if(!defined('SM_REDIRECT_URL')) {
+	define('SM_REDIRECT_URL', 'http://localhost:8080/index.php');
+}
+
 session_start();
 
 $authenticator = new Authenticator(SM_CLIENT_ID, SM_CLIENT_SECRET, SM_REDIRECT_URL);
