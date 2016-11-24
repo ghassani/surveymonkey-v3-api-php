@@ -52,13 +52,13 @@ trait ResponsesTrait
 	{
 		if ($detailed) {
 			return $this->sendRequest(
-				$this->createRequest('GET', sprintf('collectors/%d/responses/bulk', $surveyId), [ 
+				$this->createRequest('GET', sprintf('collectors/%d/responses/bulk', $collectorId), [ 
 					'query' => $filters 
 				])
 			);
 		} else {
 			return $this->sendRequest(
-				$this->createRequest('GET', sprintf('collectors/%d/responses', $surveyId), [ 
+				$this->createRequest('GET', sprintf('collectors/%d/responses', $collectorId), [ 
 					'query' => $filters 
 				])
 			);
@@ -76,7 +76,7 @@ trait ResponsesTrait
 	public function createCollectorResponse($collectorId, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('POST', sprintf('collectors/%d/responses', $surveyId), [], $data)
+			$this->createRequest('POST', sprintf('collectors/%d/responses', $collectorId), [], $data)
 		);
 	}
 
@@ -93,11 +93,11 @@ trait ResponsesTrait
 	{
 		if ($detailed) {
 			return $this->sendRequest(
-				$this->createRequest('GET', sprintf('collectors/%d/responses/%d', $surveyId, $responseId))
+				$this->createRequest('GET', sprintf('collectors/%d/responses/%d', $collectorId, $responseId))
 			);
 		} else {
 			return $this->sendRequest(
-				$this->createRequest('GET', sprintf('collectors/%d/responses/%d/details', $surveyId, $responseId))
+				$this->createRequest('GET', sprintf('collectors/%d/responses/%d/details', $collectorId, $responseId))
 			);
 		}
 	}
@@ -114,7 +114,7 @@ trait ResponsesTrait
 	public function updateCollectorResponse($collectorId, $responseId, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('PATCH', sprintf('collectors/%d/responses/%d', $surveyId, $responseId), [], $data)
+			$this->createRequest('PATCH', sprintf('collectors/%d/responses/%d', $collectorId, $responseId), [], $data)
 		);
 	}
 
@@ -130,7 +130,7 @@ trait ResponsesTrait
 	public function replaceCollectorResponse($collectorId, $responseId, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('PUT', sprintf('collectors/%d/responses/%d', $surveyId, $responseId), [], $data)
+			$this->createRequest('PUT', sprintf('collectors/%d/responses/%d', $collectorId, $responseId), [], $data)
 		);
 	}
 
@@ -145,7 +145,7 @@ trait ResponsesTrait
 	public function deleteCollectorResponse($collectorId, $responseId)
 	{
 		return $this->sendRequest(
-			$this->createRequest('DELETE', sprintf('collectors/%d/responses/%d', $surveyId, $responseId))
+			$this->createRequest('DELETE', sprintf('collectors/%d/responses/%d', $collectorId, $responseId))
 		);
 	}
 
@@ -162,13 +162,13 @@ trait ResponsesTrait
 	{
 		if ($detailed) {
 			return $this->sendRequest(
-				$this->createRequest('GET', sprintf('surveys/%d/responses/%d/details', $surveyId, $responseId), [ 
+				$this->createRequest('GET', sprintf('surveys/%d/responses/%d/details', $collectorId, $responseId), [ 
 					'query' => $filters 
 				])
 			);
 		} else {
 			return $this->sendRequest(
-				$this->createRequest('GET', sprintf('surveys/%d/responses/%d', $surveyId, $responseId), [ 
+				$this->createRequest('GET', sprintf('surveys/%d/responses/%d', $collectorId, $responseId), [ 
 					'query' => $filters 
 				])
 			);
