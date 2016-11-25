@@ -1,4 +1,4 @@
-# SuveryMonkey API v3 Wrapper for PHP
+# SurveyMonkey API v3 Wrapper for PHP
 
 A simple SurveyMonkey API wrapper for version 3 of their API.
 
