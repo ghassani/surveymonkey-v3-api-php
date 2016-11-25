@@ -158,17 +158,17 @@ trait ResponsesTrait
 	*
 	* @return @see Client::sendRequest
 	*/
-	public function getSurveyResponse($collectorId, $responseId, $detailed = false)
+	public function getSurveyResponse($surveyId, $responseId, $detailed = false)
 	{
 		if ($detailed) {
 			return $this->sendRequest(
-				$this->createRequest('GET', sprintf('surveys/%d/responses/%d/details', $collectorId, $responseId), [ 
+				$this->createRequest('GET', sprintf('surveys/%d/responses/%d/details', $surveyId, $responseId), [ 
 					'query' => $filters 
 				])
 			);
 		} else {
 			return $this->sendRequest(
-				$this->createRequest('GET', sprintf('surveys/%d/responses/%d', $collectorId, $responseId), [ 
+				$this->createRequest('GET', sprintf('surveys/%d/responses/%d', $surveyId, $responseId), [ 
 					'query' => $filters 
 				])
 			);
