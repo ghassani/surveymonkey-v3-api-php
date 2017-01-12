@@ -19,6 +19,7 @@ class ContactTest extends BaseTest
 	*/
 	public function testContactList()
 	{
+
 		$contactListsResponse = $this->client->getContactLists([]);
 
 		$this->assertInstanceOf('Spliced\\SurveyMonkey\\Response', $contactListsResponse);

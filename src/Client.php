@@ -155,7 +155,14 @@ class Client
 	*/
 	private function createRequest($method, $uri, array $options = [], $body = '')
 	{
-		return new Request($method, $uri, $options, is_array($body) ? json_encode($body) : $body);
+		$ret = new Request($method, $uri, $options, is_array($body) ? json_encode($body) : $body);
+
+		if (isset($options['query'])) {
+			$uri = $ret->getUri()->withQuery(is_array($options['query']) ? http_build_query($options['query']) : $options['query']);
+			return $ret->withUri($uri, true);
+		}
+
+		return $ret;
 	}
 
 	/**

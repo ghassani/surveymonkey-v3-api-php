@@ -9,7 +9,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
 	public function __construct($name = NULL, array $data = array(), $dataName = '' )
 	{
 		parent::__construct($name, $data, $dataName);
-		$this->client = initLiveClient();
+		$this->client = $this->initLiveClient();
 	}
 
 	public function initLiveClient()
