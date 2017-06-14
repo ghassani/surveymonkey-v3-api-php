@@ -30,7 +30,7 @@ trait CollectorsTrait
 	public function getCollectorsForSurvey($surveyId, array $filters = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('GET', sprintf('surveys/%d/collectors', $surveyId), [ 
+			$this->createRequest('GET', sprintf('surveys/%s/collectors', $surveyId), [ 
 				'query' => $filters 
 			])
 		);
@@ -47,7 +47,7 @@ trait CollectorsTrait
 	public function createCollectorForSurvey($surveyId, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('POST', sprintf('surveys/%d/collectors', $surveyId), [], $data)
+			$this->createRequest('POST', sprintf('surveys/%s/collectors', $surveyId), [], $data)
 		);
 	}
 
@@ -61,7 +61,7 @@ trait CollectorsTrait
 	public function getCollector($collectorId)
 	{
 		return $this->sendRequest(
-			$this->createRequest('GET', sprintf('collectors/%d', $collectorId))
+			$this->createRequest('GET', sprintf('collectors/%s', $collectorId))
 		);
 	}
 
@@ -76,7 +76,7 @@ trait CollectorsTrait
 	public function updateCollector($collectorId, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('PATCH', sprintf('collectors/%d', $collectorId), [], $data)
+			$this->createRequest('PATCH', sprintf('collectors/%s', $collectorId), [], $data)
 		);
 	}
 
@@ -91,7 +91,7 @@ trait CollectorsTrait
 	public function replaceCollector($collectorId, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('PUT', sprintf('collectors/%d', $collectorId), [], $data)
+			$this->createRequest('PUT', sprintf('collectors/%s', $collectorId), [], $data)
 		);
 	}
 
@@ -120,7 +120,7 @@ trait CollectorsTrait
 	public function getCollectorMessages($collectorId, array $filters = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('GET', sprintf('collectors/%d/messages', $collectorId), [
+			$this->createRequest('GET', sprintf('collectors/%s/messages', $collectorId), [
 				'query' => $filters
 			])
 		);
@@ -137,7 +137,7 @@ trait CollectorsTrait
 	public function createCollectorMessage($collectorId, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('POST', sprintf('collectors/%d/messages', $collectorId), [], $data)
+			$this->createRequest('POST', sprintf('collectors/%s/messages', $collectorId), [], $data)
 		);
 	}
 
@@ -153,7 +153,7 @@ trait CollectorsTrait
 	public function copyCollectorMessage($fromCollectorId, $fromMessageId, $includeRecipients = false)
 	{
 		return $this->sendRequest(
-			$this->createRequest('POST', sprintf('collectors/%d/messages', $fromCollectorId), [
+			$this->createRequest('POST', sprintf('collectors/%s/messages', $fromCollectorId), [
 				'query' => [
 					'from_collector_id'  => $fromCollectorId,
 					'from_message_id' 	 => $fromMessageId,
@@ -174,7 +174,7 @@ trait CollectorsTrait
 	public function getCollectorMessage($collectorId, $messageid)
 	{
 		return $this->sendRequest(
-			$this->createRequest('GET', sprintf('collectors/%d/messages/%d', $collectorId, $messageid))
+			$this->createRequest('GET', sprintf('collectors/%s/messages/%s', $collectorId, $messageid))
 		);
 	}
 
@@ -190,7 +190,7 @@ trait CollectorsTrait
 	public function updateCollectorMessage($collectorId, $messageid, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('PATCH', sprintf('collectors/%d/messages/%d', $collectorId, $messageid), [], $data)
+			$this->createRequest('PATCH', sprintf('collectors/%s/messages/%s', $collectorId, $messageid), [], $data)
 		);
 	}
 
@@ -206,7 +206,7 @@ trait CollectorsTrait
 	public function replaceCollectorMessage($collectorId, $messageid, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('PUT', sprintf('collectors/%d/messages/%d', $collectorId, $messageid), [], $data)
+			$this->createRequest('PUT', sprintf('collectors/%s/messages/%s', $collectorId, $messageid), [], $data)
 		);
 	}
 
@@ -221,7 +221,7 @@ trait CollectorsTrait
 	public function deleteCollectorMessage($collectorId, $messageid)
 	{
 		return $this->sendRequest(
-			$this->createRequest('DELETE', sprintf('collectors/%d/messages/%d', $collectorId, $messageid))
+			$this->createRequest('DELETE', sprintf('collectors/%s/messages/%s', $collectorId, $messageid))
 		);
 	}
 
@@ -229,7 +229,7 @@ trait CollectorsTrait
 	* sendCollectorMessage
 	*
 	* @param int $collectorId
-	* @param int $messageid
+	* @param int $messageId
 	* @param DateTime|null $scheduledDate
 	*
 	* @return @see Client::sendRequest
@@ -237,7 +237,7 @@ trait CollectorsTrait
 	public function sendCollectorMessage($collectorId, $messageId, \DateTime $scheduledDate = null)
 	{
 		return $this->sendRequest(
-			$this->createRequest('POST', sprintf('collectors/%d/messages/%d/send', $collectorId, $messageid), [
+			$this->createRequest('POST', sprintf('collectors/%s/messages/%s/send', $collectorId, $messageId), [
 				'query' => [ 'scheduled_date' => $scheduledDate ? $scheduledDate->format() : null ]
 			])
 		);
@@ -255,7 +255,7 @@ trait CollectorsTrait
 	public function getCollectorMessageRecipients($collectorId, $messageId, array $filters = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('GET', sprintf('collectors/%d/messages/%d/recipients', $collectorId, $messageid), [
+			$this->createRequest('GET', sprintf('collectors/%s/messages/%s/recipients', $collectorId, $messageid), [
 				'query' => $filters
 			])
 		);
@@ -272,7 +272,7 @@ trait CollectorsTrait
 	public function getCollectorRecipients($collectorId, array $filters = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('GET', sprintf('collectors/%d/recipients', $collectorId), [
+			$this->createRequest('GET', sprintf('collectors/%s/recipients', $collectorId), [
 				'query' => $filters
 			])
 		);
@@ -289,7 +289,7 @@ trait CollectorsTrait
 	public function getCollectorRecipient($collectorId, $recipientId)
 	{
 		return $this->sendRequest(
-			$this->createRequest('GET', sprintf('collectors/%d/recipients/%d', $collectorId,  $recipientId))
+			$this->createRequest('GET', sprintf('collectors/%s/recipients/%s', $collectorId,  $recipientId))
 		);
 	}
 
@@ -304,7 +304,7 @@ trait CollectorsTrait
 	public function deleteCollectorRecipient($collectorId, $recipientId)
 	{
 		return $this->sendRequest(
-			$this->createRequest('DELETE', sprintf('collectors/%d/recipients/%d', $collectorId,  $recipientId))
+			$this->createRequest('DELETE', sprintf('collectors/%s/recipients/%s', $collectorId,  $recipientId))
 		);
 	}
 }
