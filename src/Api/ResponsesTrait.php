@@ -114,7 +114,7 @@ trait ResponsesTrait
 	public function updateCollectorResponse($collectorId, $responseId, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('PATCH', sprintf('collectors/%d/responses/%d', $collectorId, $responseId), [], $data)
+			$this->createRequest('PATCH', sprintf('collectors/%s/responses/%s', $collectorId, $responseId), [], $data)
 		);
 	}
 
@@ -130,7 +130,7 @@ trait ResponsesTrait
 	public function replaceCollectorResponse($collectorId, $responseId, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('PUT', sprintf('collectors/%d/responses/%d', $collectorId, $responseId), [], $data)
+			$this->createRequest('PUT', sprintf('collectors/%s/responses/%s', $collectorId, $responseId), [], $data)
 		);
 	}
 
@@ -145,7 +145,7 @@ trait ResponsesTrait
 	public function deleteCollectorResponse($collectorId, $responseId)
 	{
 		return $this->sendRequest(
-			$this->createRequest('DELETE', sprintf('collectors/%d/responses/%d', $collectorId, $responseId))
+			$this->createRequest('DELETE', sprintf('collectors/%s/responses/%s', $collectorId, $responseId))
 		);
 	}
 
@@ -158,17 +158,17 @@ trait ResponsesTrait
 	*
 	* @return @see Client::sendRequest
 	*/
-	public function getSurveyResponse($surveyId, $responseId, $detailed = false)
+	public function getSurveyResponse($surveyId, $responseId, $detailed = false, array $filters = [])
 	{
 		if ($detailed) {
 			return $this->sendRequest(
-				$this->createRequest('GET', sprintf('surveys/%d/responses/%d/details', $surveyId, $responseId), [ 
+				$this->createRequest('GET', sprintf('surveys/%s/responses/%s/details', $surveyId, $responseId), [ 
 					'query' => $filters 
 				])
 			);
 		} else {
 			return $this->sendRequest(
-				$this->createRequest('GET', sprintf('surveys/%d/responses/%d', $surveyId, $responseId), [ 
+				$this->createRequest('GET', sprintf('surveys/%s/responses/%s', $surveyId, $responseId), [ 
 					'query' => $filters 
 				])
 			);
@@ -187,7 +187,7 @@ trait ResponsesTrait
 	public function updateSurveyResponse($surveyId, $responseId, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('PATCH', sprintf('surveys/%d/responses/%d', $surveyId, $responseId), [], $data)
+			$this->createRequest('PATCH', sprintf('surveys/%s/responses/%s', $surveyId, $responseId), [], $data)
 		);
 	}
 
@@ -203,7 +203,7 @@ trait ResponsesTrait
 	public function replaceSurveyResponse($surveyId, $responseId, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('PUT', sprintf('surveys/%d/responses/%d', $surveyId, $responseId), [], $data)
+			$this->createRequest('PUT', sprintf('surveys/%s/responses/%s', $surveyId, $responseId), [], $data)
 		);
 	}
 
@@ -218,7 +218,7 @@ trait ResponsesTrait
 	public function deleteSurveyResponse($surveyId, $responseId)
 	{
 		return $this->sendRequest(
-			$this->createRequest('DELETE', sprintf('surveys/%d/responses/%d', $surveyId, $responseId))
+			$this->createRequest('DELETE', sprintf('surveys/%s/responses/%s', $surveyId, $responseId))
 		);
 	}
 }
