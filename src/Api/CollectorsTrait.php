@@ -105,7 +105,7 @@ trait CollectorsTrait
 	public function deleteCollector($collectorId)
 	{
 		return $this->sendRequest(
-			$this->createRequest('DELETE', sprintf('collectors/%d', $collectorId))
+			$this->createRequest('DELETE', sprintf('collectors/%s', $collectorId))
 		);
 	}
 
@@ -275,7 +275,7 @@ trait CollectorsTrait
 	public function createCollectorMessageRecipient($collectorId, $messageId, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('POST', sprintf('collectors/%d/messages/%d/recipients', $collectorId, $messageId), [], $data)
+			$this->createRequest('POST', sprintf('collectors/%s/messages/%s/recipients', $collectorId, $messageId), [], $data)
 		);
 	}
 
