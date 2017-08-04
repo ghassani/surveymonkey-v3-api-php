@@ -167,14 +167,14 @@ trait CollectorsTrait
 	* getCollectorMessage
 	*
 	* @param int $collectorId
-	* @param int $messageid
+	* @param int $messageId
 	*
 	* @return @see Client::sendRequest
 	*/
-	public function getCollectorMessage($collectorId, $messageid)
+	public function getCollectorMessage($collectorId, $messageId)
 	{
 		return $this->sendRequest(
-			$this->createRequest('GET', sprintf('collectors/%s/messages/%s', $collectorId, $messageid))
+			$this->createRequest('GET', sprintf('collectors/%s/messages/%s', $collectorId, $messageId))
 		);
 	}
 
@@ -182,15 +182,15 @@ trait CollectorsTrait
 	* updateCollectorMessage
 	*
 	* @param int $collectorId
-	* @param int $messageid
+	* @param int $messageId
 	* @param array $data - See API docs for available fields
 	*
 	* @return @see Client::sendRequest
 	*/
-	public function updateCollectorMessage($collectorId, $messageid, array $data = [])
+	public function updateCollectorMessage($collectorId, $messageId, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('PATCH', sprintf('collectors/%s/messages/%s', $collectorId, $messageid), [], $data)
+			$this->createRequest('PATCH', sprintf('collectors/%s/messages/%s', $collectorId, $messageId), [], $data)
 		);
 	}
 
@@ -198,15 +198,15 @@ trait CollectorsTrait
 	* replaceCollectorMessage
 	*
 	* @param int $collectorId
-	* @param int $messageid
+	* @param int $messageId
 	* @param array $data - See API docs for available fields
 	*
 	* @return @see Client::sendRequest
 	*/
-	public function replaceCollectorMessage($collectorId, $messageid, array $data = [])
+	public function replaceCollectorMessage($collectorId, $messageId, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('PUT', sprintf('collectors/%s/messages/%s', $collectorId, $messageid), [], $data)
+			$this->createRequest('PUT', sprintf('collectors/%s/messages/%s', $collectorId, $messageId), [], $data)
 		);
 	}
 
@@ -214,14 +214,14 @@ trait CollectorsTrait
 	* deleteCollectorMessage
 	*
 	* @param int $collectorId
-	* @param int $messageid
+	* @param int $messageId
 	*
 	* @return @see Client::sendRequest
 	*/
-	public function deleteCollectorMessage($collectorId, $messageid)
+	public function deleteCollectorMessage($collectorId, $messageId)
 	{
 		return $this->sendRequest(
-			$this->createRequest('DELETE', sprintf('collectors/%s/messages/%s', $collectorId, $messageid))
+			$this->createRequest('DELETE', sprintf('collectors/%s/messages/%s', $collectorId, $messageId))
 		);
 	}
 
@@ -238,7 +238,7 @@ trait CollectorsTrait
 	{
 		return $this->sendRequest(
 			$this->createRequest('POST', sprintf('collectors/%s/messages/%s/send', $collectorId, $messageId), [
-				'query' => [ 'scheduled_date' => $scheduledDate ? $scheduledDate->format() : null ]
+				'query' => [ 'scheduled_date' => $scheduledDate ? $scheduledDate->format(DATE_ATOM) : date(DATE_ATOM) ]
 			])
 		);
 	}
@@ -255,9 +255,27 @@ trait CollectorsTrait
 	public function getCollectorMessageRecipients($collectorId, $messageId, array $filters = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('GET', sprintf('collectors/%s/messages/%s/recipients', $collectorId, $messageid), [
+			$this->createRequest('GET', sprintf('collectors/%s/messages/%s/recipients', $collectorId, $messageId), [
 				'query' => $filters
 			])
+		);
+	}
+
+
+	/**
+	* createCollectorMessageRecipient
+	*
+	* @param int $collectorId
+	* @param int $messageId
+	* @param array $data - See API docs for available fields
+	* @link https://developer.surveymonkey.com/api/v3/#collectors-id-messages-id-recipients Documentation for creating recipient
+	*
+	* @return @see Client::sendRequest
+	*/
+	public function createCollectorMessageRecipient($collectorId, $messageId, array $data = [])
+	{
+		return $this->sendRequest(
+			$this->createRequest('POST', sprintf('collectors/%d/messages/%d/recipients', $collectorId, $messageId), [], $data)
 		);
 	}
 
