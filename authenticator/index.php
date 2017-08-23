@@ -3,7 +3,7 @@
 require_once(dirname(__FILE__).'/../vendor/autoload.php');
 
 if (!file_exists(dirname(__FILE__).'/creds.php')) {
-	throw new \Exception(spritnf('Create a file named creds.php in this directory with the following constants defined: SM_CLIENT_ID, SM_CLIENT_SECRET and optionally SM_REDIRECT_URL'));
+	throw new \Exception(sprintf('Create a file named creds.php in this directory with the following constants defined: SM_CLIENT_ID, SM_CLIENT_SECRET and optionally SM_REDIRECT_URL'));
 }
 
 require_once(dirname(__FILE__).'/creds.php');
