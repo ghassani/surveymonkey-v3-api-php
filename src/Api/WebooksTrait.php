@@ -60,7 +60,7 @@ trait WebooksTrait
 	public function getWebhook($webhookId)
 	{
 		return $this->sendRequest(
-			$this->createRequest('GET', spritnf('webhooks/%d', $webhookId))
+			$this->createRequest('GET', sprintf('webhooks/%d', $webhookId))
 		);
 	}
 
@@ -76,7 +76,7 @@ trait WebooksTrait
 	public function updateWebhook($webhookId, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('PATCH', spritnf('webhooks/%d', $webhookId), [], $data)
+			$this->createRequest('PATCH', sprintf('webhooks/%d', $webhookId), [], $data)
 		);
 	}
 
@@ -92,7 +92,7 @@ trait WebooksTrait
 	public function replaceWebhook($webhookId, array $data = [])
 	{
 		return $this->sendRequest(
-			$this->createRequest('PUT', spritnf('webhooks/%d', $webhookId), [], $data)
+			$this->createRequest('PUT', sprintf('webhooks/%d', $webhookId), [], $data)
 		);
 	}
 
@@ -106,7 +106,7 @@ trait WebooksTrait
 	public function deleteWebhook($webhookId)
 	{
 		return $this->sendRequest(
-			$this->createRequest('DELETE', spritnf('webhooks/%d', $webhookId))
+			$this->createRequest('DELETE', sprintf('webhooks/%d', $webhookId))
 		);
 	}
 }
