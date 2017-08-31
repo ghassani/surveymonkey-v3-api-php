@@ -45,7 +45,7 @@ trait ErrorsTrait
 	public function getError($errorId)
 	{
 		return $this->sendRequest(
-			$this->createRequest('GET', spritnf('errors/%d', $errorId))
+			$this->createRequest('GET', sprintf('errors/%d', $errorId))
 		);
 	}
 
