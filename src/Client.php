@@ -17,7 +17,7 @@ use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
 use GuzzleHttp\Exception\ClientException;
 use Guzzle\Http\Exception\ClientErrorResponseException;
-use Spliced\SurveyMonkey\SurveyMonkeyException;
+use Spliced\SurveyMonkey\SurveyMonkeyApiException;
 use Spliced\SurveyMonkey\Response;
 use Spliced\SurveyMonkey\Api;
 
@@ -130,15 +130,14 @@ class Client
 	*/
 	public function sendRequest(RequestInterface $request)
 	{
-
 		try {
 			$response = $this->httpClient->send($request);
 		} catch (ClientErrorResponseException $e) {
 			return new Response($request, $e->getResponse());
 		} catch (ClientException $e) {
 			return new Response($request, $e->getResponse());
-		} catch (\Exeption $e) {
-			throw new SurveyMonkeyException($e->getMessage(), $e->getCode(), $e);
+		} catch (\Exception $e) {
+			throw new SurveyMonkeyApiException($e->getMessage(), $e->getCode(), $e);
 		}
 		
 		return new Response($request, $response);	
