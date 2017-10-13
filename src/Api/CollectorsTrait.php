@@ -278,6 +278,23 @@ trait CollectorsTrait
 			$this->createRequest('POST', sprintf('collectors/%s/messages/%s/recipients', $collectorId, $messageId), [], $data)
 		);
 	}
+	
+	/**
+	* createCollectorMessageRecipientBulk
+	*
+	* @param int $collectorId
+	* @param int $messageId
+	* @param array $data - See API docs for available fields
+	* @link https://developer.surveymonkey.net/api/v3/#collectors-id-messages-id-recipients-bulk Documentation for creating recipients in bulk
+	*
+	* @return @see Client::sendRequest
+	*/
+	public function createCollectorMessageRecipientBulk($collectorId, $messageId, array $data = [])
+	{
+		return $this->sendRequest(
+			$this->createRequest('POST', sprintf('collectors/%s/messages/%s/recipients/bulk', $collectorId, $messageId), [], $data)
+		);
+	}
 
 	/**
 	* getCollectorRecipients
