@@ -24,14 +24,31 @@ trait ResponsesTrait
 	* getSurveyResponses
 	*
 	* @param int $surveyId
+	* @param bool $detailed - Defaults to false
+	* @param array $filters - Available filters: 
+	*							page, per_page, start_created_at, end_created_at, 
+	*							start_modified_at, end_modified_at, status,
+	*							email, first_name, last_name, ip, custom, 
+	*							total_time_max, total_time_min, total_time_units, 
+	*							sort_order, sort_by
 	*
 	* @return @see Client::sendRequest
 	*/
-	public function getSurveyResponses($surveyId)
+	public function getSurveyResponses($surveyId, $detailed = false, array $filters = [])
 	{
-		return $this->sendRequest(
-			$this->createRequest('GET', sprintf('surveys/%d/responses', $surveyId))
-		);
+		if ($detailed) {
+			return $this->sendRequest(
+				$this->createRequest('GET', sprintf('surveys/%d/responses/bulk', $surveyId), [ 
+					'query' => $filters 
+				])
+			);
+		} else {
+			return $this->sendRequest(
+				$this->createRequest('GET', sprintf('surveys/%d/responses', $surveyId), [ 
+					'query' => $filters 
+				])
+			);
+		}
 	}
 
 	/**
