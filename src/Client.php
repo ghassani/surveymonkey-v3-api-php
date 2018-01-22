@@ -152,9 +152,9 @@ class Client
 	*
 	* @return RequestInterface
 	*/
-	private function createRequest($method, $uri, array $options = [], $body = '')
+	private function createRequest($method, $uri, array $options = [], $body = '{}')
 	{
-		$ret = new Request($method, $uri, $options, is_array($body) ? json_encode($body) : $body);
+		$ret = new Request($method, $uri, $options, is_array($body) ? json_encode($body, JSON_FORCE_OBJECT) : $body);
 
 		if (isset($options['query'])) {
 			$uri = $ret->getUri()->withQuery(is_array($options['query']) ? http_build_query($options['query']) : $options['query']);
