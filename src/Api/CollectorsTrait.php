@@ -235,12 +235,12 @@ trait CollectorsTrait
 	* @return @see Client::sendRequest
 	*/
 	public function sendCollectorMessage($collectorId, $messageId, \DateTime $scheduledDate = null)
-	{
-		return $this->sendRequest(
-			$this->createRequest('POST', sprintf('collectors/%s/messages/%s/send', $collectorId, $messageId), [
-				'query' => [ 'scheduled_date' => $scheduledDate ? $scheduledDate->format(DATE_ATOM) : date(DATE_ATOM) ]
-			])
-		);
+    	{
+        	$data = $scheduledDate ? array('scheduled_date' => $scheduledDate->format(DATE_ATOM)) : array();
+		
+        	return $this->sendRequest(
+            		$this->createRequest('POST', sprintf('collectors/%s/messages/%s/send', $collectorId, $messageId), [], $data)
+        	);
 	}
 
 	/**
