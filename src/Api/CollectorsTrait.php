@@ -236,10 +236,10 @@ trait CollectorsTrait
 	*/
 	public function sendCollectorMessage($collectorId, $messageId, \DateTime $scheduledDate = null)
 	{
+		$data = $scheduledDate ? [ 'scheduled_date' => $scheduledDate->format(DATE_ATOM) ] : [];
+		
 		return $this->sendRequest(
-			$this->createRequest('POST', sprintf('collectors/%s/messages/%s/send', $collectorId, $messageId), [
-				'query' => [ 'scheduled_date' => $scheduledDate ? $scheduledDate->format(DATE_ATOM) : date(DATE_ATOM) ]
-			])
+			$this->createRequest('POST', sprintf('collectors/%s/messages/%s/send', $collectorId, $messageId), [], $data)
 		);
 	}
 
