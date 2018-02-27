@@ -289,7 +289,7 @@ trait CollectorsTrait
 	*
 	* @return @see Client::sendRequest
 	*/
-	public function createCollectorMessageRecipientBulk($collectorId, $messageId, array $data = [])
+	public function createCollectorMessageRecipientBulk($collectorId, $messageId, $data = [])
 	{
 		return $this->sendRequest(
 			$this->createRequest('POST', sprintf('collectors/%s/messages/%s/recipients/bulk', $collectorId, $messageId), [], $data)
