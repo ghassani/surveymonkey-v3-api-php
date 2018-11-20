@@ -1,5 +1,6 @@
 {
     "name": "ghassani/surveymonkey-v3-api-php",
+    "version" : "1.0.0",
     "authors": [
         {
             "name": "Gassan Idriss",
