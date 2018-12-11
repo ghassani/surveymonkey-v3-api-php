@@ -144,17 +144,26 @@ class Client
 	}
 
 	/**
-	* createRequest
-	* 
-	* @param string $method
-	* @param string $uri
-	* @param array $options - Guzzle compatible request options
-	*
-	* @return RequestInterface
-	*/
-	private function createRequest($method, $uri, array $options = [], $body = '{}')
+	 * createRequest
+	 *
+	 * @param string     $method
+	 * @param string     $uri
+	 * @param array      $options    Guzzle compatible request options
+     * @param array|null $body       Request body if applicable, using associative arrays for named properties & numeric
+     *                               arrays for array data types.
+	 * @return RequestInterface
+	 */
+	private function createRequest($method, $uri, array $options = [], $body = null)
 	{
-		$ret = new Request($method, $uri, $options, is_array($body) ? json_encode($body, JSON_FORCE_OBJECT) : $body);
+        if (empty($body)) {
+            // Empty arrays and NULL data inputs both need casting to an empty JSON object.
+            // See https://stackoverflow.com/a/41150809/2803757
+            $bodyString = '{}';
+        } elseif (is_array($body)) {
+            $bodyString = json_encode($body);
+        }
+
+		$ret = new Request($method, $uri, $options, $bodyString);
 
 		if (isset($options['query'])) {
 			$uri = $ret->getUri()->withQuery(is_array($options['query']) ? http_build_query($options['query']) : $options['query']);
