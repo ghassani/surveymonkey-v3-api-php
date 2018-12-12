@@ -10,6 +10,7 @@
     "license": "GPL-3.0",
     "require": {
         "php": ">=5.5",
+        "ext-json": "*",
         "guzzlehttp/guzzle": "6.*@stable"
     },
     "autoload" : {
