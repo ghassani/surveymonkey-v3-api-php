@@ -171,6 +171,21 @@ trait ContactTrait
 	}
 
 	/**
+	* createContactsInList
+	*
+	* @param int $contactListId
+	* @param array $data - See API docs for available fields
+	*
+	* @return @see Client::sendRequest
+	*/
+	public function createContactsInList($contactListId, array $data = [])
+	{
+		return $this->sendRequest(
+			$this->createRequest('POST', sprintf('contact_lists/%d/contacts/bulk', $contactListId), [], $data)
+		);
+	}
+
+	/**
 	* getContacts
 	*
 	* @param array $filters - Available filters: page, per_page, status, sort_by, sort_order, search_by
