@@ -150,10 +150,10 @@ trait CollectorsTrait
 	*
 	* @return @see Client::sendRequest
 	*/
-	public function copyCollectorMessage($fromCollectorId, $fromMessageId, $includeRecipients = false)
+	public function copyCollectorMessage($collectorId, $fromCollectorId, $fromMessageId, $includeRecipients = false)
 	{
 		return $this->sendRequest(
-			$this->createRequest('POST', sprintf('collectors/%s/messages', $fromCollectorId), [
+			$this->createRequest('POST', sprintf('collectors/%s/messages', $collectorId), [
 				'query' => [
 					'from_collector_id'  => $fromCollectorId,
 					'from_message_id' 	 => $fromMessageId,
