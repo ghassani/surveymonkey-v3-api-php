@@ -10,7 +10,7 @@ A simple SurveyMonkey API wrapper for version 3 of their API.
 Add the following to your composer.json under require:
 
     "require": {
-        "ghassani/surveymonkey-v3-api-php": "1.0.1"
+        "ghassani/surveymonkey-v3-api-php": "1.0.2"
     },
 
 # Usage
