@@ -169,25 +169,21 @@ trait ResponsesTrait
 	/**
 	* getSurveyResponse
 	*
-	* @param int $collectorId
+	* @param int $surveyId
 	* @param int $responseId
 	* @param bool $detailed
 	*
 	* @return @see Client::sendRequest
 	*/
-	public function getSurveyResponse($surveyId, $responseId, $detailed = false, array $filters = [])
+	public function getSurveyResponse($surveyId, $responseId, $detailed = false)
 	{
 		if ($detailed) {
 			return $this->sendRequest(
-				$this->createRequest('GET', sprintf('surveys/%s/responses/%s/details', $surveyId, $responseId), [ 
-					'query' => $filters 
-				])
+				$this->createRequest('GET', sprintf('surveys/%s/responses/%s/details', $surveyId, $responseId))
 			);
 		} else {
 			return $this->sendRequest(
-				$this->createRequest('GET', sprintf('surveys/%s/responses/%s', $surveyId, $responseId), [ 
-					'query' => $filters 
-				])
+				$this->createRequest('GET', sprintf('surveys/%s/responses/%s', $surveyId, $responseId))
 			);
 		}
 	}
