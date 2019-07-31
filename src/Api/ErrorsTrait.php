@@ -13,19 +13,21 @@
 namespace Spliced\SurveyMonkey\Api;
 
 /**
-* Webhook API Functions
-*
-* @see https://developer.surveymonkey.com/api/v3/#errors
-*/
+ * Webhook API Functions
+ *
+ * @see https://developer.surveymonkey.com/api/v3/#errors
+ */
 trait ErrorsTrait
 {
 	/**
-	* getErrors
-	*
-	* @param array $filters - Available filters: page, per_page
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getErrors
+	 *
+	 * @param array $filters - Available filters: page, per_page
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#errors
+	 */
 	public function getErrors(array $filters = [])
 	{
 		return $this->sendRequest(
@@ -36,12 +38,14 @@ trait ErrorsTrait
 	}
 
 	/**
-	* getError
-	*
-	* @param int $errorId
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getError
+	 *
+	 * @param int $errorId
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#errors
+	 */
 	public function getError($errorId)
 	{
 		return $this->sendRequest(

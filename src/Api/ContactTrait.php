@@ -13,36 +13,39 @@
 namespace Spliced\SurveyMonkey\Api;
 
 /**
-* Contact API Functions
-*
-* @see https://developer.surveymonkey.com/api/v3/#contacts-and-contact-lists
-*/
+ * Contact API Functions
+ *
+ * @see https://developer.surveymonkey.com/api/v3/#contacts-and-contact-lists
+ */
 trait ContactTrait
 {
-
 	/**
-	* getContactLists
-	*
-	* @param array $filters - Available filters: page, per_page
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getContactLists
+	 *
+	 * @param array $filters - Available filters: page, per_page
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contact_lists
+	 */
 	public function getContactLists(array $filters = [])
 	{
 		return $this->sendRequest(
 			$this->createRequest('GET', 'contact_lists', [ 
-				'query' => $filters 
+				'query' => $filters
 			])
 		);
 	}
 
 	/**
-	* createContactList
-	*
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * createContactList
+	 *
+	 * @param array $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contact_lists
+	 */
 	public function createContactList(array $data = [])
 	{
 	
@@ -51,13 +54,15 @@ trait ContactTrait
 		);
 	}
 
-	/**
-	* getContactList
-	*
-	* @param int $contactListId
-	*
-	* @return @see Client::sendRequest
-	*/
+    /**
+	 * getContactList
+	 *
+	 * @param int $contactListId
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contact_lists-id
+	 */
 	public function getContactList($contactListId)
 	{
 		return $this->sendRequest(
@@ -65,29 +70,33 @@ trait ContactTrait
 		);
 	}
 
-	/**
-	* updateContactList
-	*
-	* @param int $contactListId
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
-	public function updateContactList($contactListId, array $data = [])
-	{
-		return $this->sendRequest(
-			$this->createRequest('PATCH', sprintf('contact_lists/%d', $contactListId), [], $data)
-		);
-	}
+    /**
+     * updateContactList
+     *
+     * @param int $contactListId
+     * @param array $data - See API docs for available fields
+     *
+     * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contact_lists-id
+     */
+    public function updateContactList($contactListId, array $data = [])
+    {
+        return $this->sendRequest(
+            $this->createRequest('PATCH', sprintf('contact_lists/%d', $contactListId), [], $data)
+        );
+    }
 
-	/**
-	* replaceContactList
-	*
-	* @param int $contactListId
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
+    /**
+	 * replaceContactList
+	 *
+	 * @param int $contactListId
+	 * @param array $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contact_lists-id
+	 */
 	public function replaceContactList($contactListId, array $data = [])
 	{
 		return $this->sendRequest(
@@ -96,12 +105,14 @@ trait ContactTrait
 	}
 
 	/**
-	* deleteContactList
-	*
-	* @param int $contactListId
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * deleteContactList
+	 *
+	 * @param int $contactListId
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contact_lists-id
+	 */
 	public function deleteContactList($contactListId)
 	{
 		return $this->sendRequest(
@@ -110,12 +121,14 @@ trait ContactTrait
 	}
 
 	/**
-	* copyContactList
-	*
-	* @param int $contactListId
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * copyContactList
+	 *
+	 * @param int $contactListId
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contact_lists-id-copy
+	 */
 	public function copyContactList($contactListId)
 	{
 		return $this->sendRequest(
@@ -124,13 +137,15 @@ trait ContactTrait
 	}
 
 	/**
-	* mergeContactList
-	*
-	* @param int $contactListId
-	* @param int $intoContactListId
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * mergeContactList
+	 *
+	 * @param int $contactListId
+	 * @param int $intoContactListId
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contact_lists-id-merge
+	 */
 	public function mergeContactList($contactListId, $intoContactListId)
 	{
 		return $this->sendRequest(
@@ -139,13 +154,15 @@ trait ContactTrait
 	}
 
 	/**
-	* getContactsInList
-	*
-	* @param int $contactListId
-	* @param array $filters - Available filters: page, per_page, status, sort_by, sort_order, search_by
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getContactsInList
+	 *
+	 * @param int $contactListId
+	 * @param array $filters - Available filters: page, per_page, status, sort_by, sort_order, search_by, search
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contact_lists-id-contacts
+	 */
 	public function getContactsInList($contactListId, array $filters = [])
 	{
 		return $this->sendRequest(
@@ -156,13 +173,15 @@ trait ContactTrait
 	}
 
 	/**
-	* createContactInList
-	*
-	* @param int $contactListId
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * createContactInList
+	 *
+	 * @param int $contactListId
+	 * @param array $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contact_lists-id-contacts
+	 */
 	public function createContactInList($contactListId, array $data = [])
 	{
 		return $this->sendRequest(
@@ -171,13 +190,15 @@ trait ContactTrait
 	}
 
 	/**
-	* createContactsInList
-	*
-	* @param int $contactListId
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * createContactsInList
+	 *
+	 * @param int $contactListId
+	 * @param array $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contact_lists-id-contacts-bulk
+	 */
 	public function createContactsInList($contactListId, array $data = [])
 	{
 		return $this->sendRequest(
@@ -186,12 +207,14 @@ trait ContactTrait
 	}
 
 	/**
-	* getContacts
-	*
-	* @param array $filters - Available filters: page, per_page, status, sort_by, sort_order, search_by
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getContacts
+	 *
+	 * @param array $filters - Available filters: page, per_page, status, sort_by, sort_order, search_by
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contacts
+	 */
 	public function getContacts(array $filters = [])
 	{
 		return $this->sendRequest(
@@ -202,12 +225,14 @@ trait ContactTrait
 	}
 
 	/**
-	* createContact
-	*
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * createContact
+	 *
+	 * @param array $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contacts
+	 */
 	public function createContact(array $data = [])
 	{
 		return $this->sendRequest(
@@ -216,12 +241,14 @@ trait ContactTrait
 	}
 
 	/**
-	* getContact
-	*
-	* @param int $contactId
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getContact
+	 *
+	 * @param int $contactId
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contacts-id
+	 */
 	public function getContact($contactId)
 	{
 		return $this->sendRequest(
@@ -230,13 +257,15 @@ trait ContactTrait
 	}
 
 	/**
-	* updateContact
-	*
-	* @param int $contactId		
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * updateContact
+	 *
+	 * @param int $contactId
+	 * @param array $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contacts-id
+	 */
 	public function updateContact($contactId, array $data = [])
 	{
 		return $this->sendRequest(
@@ -245,13 +274,15 @@ trait ContactTrait
 	}
 
 	/**
-	* replaceContact
-	*
-	* @param int $contactId		
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * replaceContact
+	 *
+	 * @param int $contactId
+	 * @param array $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contacts-id
+	 */
 	public function replaceContact($contactId, array $data = [])
 	{
 		return $this->sendRequest(
@@ -260,12 +291,14 @@ trait ContactTrait
 	}
 
 	/**
-	* deleteContact
-	*
-	* @param int $contactId		
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * deleteContact
+	 *
+	 * @param int $contactId
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contacts-id
+	 */
 	public function deleteContact($contactId)
 	{
 		return $this->sendRequest(
@@ -274,12 +307,14 @@ trait ContactTrait
 	}
 
 	/**
-	* getContactsFields
-	*
-	* @param array $filters - Available filters: page, per_page
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getContactsFields
+	 *
+	 * @param array $filters - Available filters: page, per_page
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contact_fields
+	 */
 	public function getContactsFields(array $filters = [])
 	{
 		return $this->sendRequest(
@@ -290,12 +325,14 @@ trait ContactTrait
 	}
 
 	/**
-	* getContactField
-	*
-	* @param int $contactFieldId		
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getContactField
+	 *
+	 * @param int $contactFieldId
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contact_fields-id
+	 */
 	public function getContactField($contactFieldId)
 	{
 		return $this->sendRequest(
@@ -304,17 +341,48 @@ trait ContactTrait
 	}
 	
 	/**
-	* updateContactField
-	*
-	* @param int $contactFieldId		
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * updateContactField
+	 *
+	 * @param int $contactFieldId
+	 * @param array $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contact_fields-id
+	 */
 	public function updateContactField($contactFieldId, array $data = [])
 	{
 		return $this->sendRequest(
 			$this->createRequest('PATCH', sprintf('contact_fields/%d', $contactFieldId), [], $data)
 		);
 	}
+
+    /**
+     * updateContactField
+     *
+     * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contacts-bulk
+     */
+    public function getContactsBulk()
+    {
+        return $this->sendRequest(
+            $this->createRequest('GET', 'contacts/bulk', [])
+        );
+    }
+
+    /**
+     * updateContactField
+     *
+     * @param array $data - See API docs for available fields
+     * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#contacts-bulk
+     */
+    public function createMultipleContacts(array $data)
+    {
+        return $this->sendRequest(
+            $this->createRequest('POST', 'contacts/bulk', [], $data)
+        );
+    }
 }

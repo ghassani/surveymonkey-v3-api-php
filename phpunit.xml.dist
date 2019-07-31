@@ -21,7 +21,7 @@
     </filter>
 
 	<php>
-	  <const name="SM_API_KEY" value=""/>
-	  <const name="SM_API_ACCESS_TOKEN" value=""/>
+        <const name="SM_API_KEY" value=""/>
+        <const name="SM_API_ACCESS_TOKEN" value=""/>
 	</php>
 </phpunit>

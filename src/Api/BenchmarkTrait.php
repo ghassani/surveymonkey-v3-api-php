@@ -13,19 +13,19 @@
 namespace Spliced\SurveyMonkey\Api;
 
 /**
-* Benchmark API Functions
-*
-* @see https://developer.surveymonkey.com/api/v3/#benchmarks
-*/
+ * Benchmark API Functions
+ *
+ * @see https://developer.surveymonkey.com/api/v3/#benchmarks
+ */
 trait BenchmarkTrait
 {
 	/**
-	* getBenchmarkBundles
-	*
-	* @param array $filters - Available filters: page, per_page, country
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getBenchmarkBundles
+	 *
+	 * @param $filters - Available filters: page, per_page, country
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+	 */
 	public function getBenchmarkBundles(array $filters = [])
 	{
 		return $this->sendRequest(
@@ -36,12 +36,12 @@ trait BenchmarkTrait
 	}
 
 	/**
-	* getBenchmarkBundle
-	*
-	* @param int $benchmarkBundleId
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getBenchmarkBundle
+	 *
+	 * @param $benchmarkBundleId
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+	 */
 	public function getBenchmarkBundle($benchmarkBundleId)
 	{
 		return $this->sendRequest(
@@ -50,15 +50,15 @@ trait BenchmarkTrait
 	}
 
 	/**
-	* analyzeSurveyQuestions
-	*
-	* @param int $benchmarkBundleId
-	* @param int $questionids
-	* @param array $filters - Available filters: percentile_start, percentile_end
-	*
-	* @return @see Client::sendRequest
-	*/
-	public function analyzeSurveyQuestions($benchmarkBundleId, array $questionids, array $filters = [])
+	 * analyzeSurveyQuestions
+	 *
+	 * @param $benchmarkBundleId
+	 * @param $questionIds
+	 * @param $filters - Available filters: percentile_start, percentile_end
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+	 */
+	public function analyzeSurveyQuestions($benchmarkBundleId, array $questionIds, array $filters = [])
 	{
 		return $this->sendRequest(
 			$this->createRequest('GET', sprintf('benchmark_bundles/%d/analyze', $benchmarkBundleId). [
@@ -70,15 +70,15 @@ trait BenchmarkTrait
 	}
 
 	/**
-	* getQuestionBenchmarkResult
-	*
-	* @param int $surveyId
-	* @param int $pageId
-	* @param int $questionids
-	* @param array $filters - Available filters: percentile_start, percentile_end
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getQuestionBenchmarkResult
+	 *
+	 * @param $surveyId
+	 * @param $pageId
+	 * @param $questionId
+	 * @param array $filters - Available filters: percentile_start, percentile_end
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+	 */
 	public function getQuestionBenchmarkResult($surveyId, $pageId, $questionId, array $filters = [])
 	{
 		return $this->sendRequest(

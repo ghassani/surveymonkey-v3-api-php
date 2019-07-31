@@ -13,16 +13,16 @@
 namespace Spliced\SurveyMonkey\Api;
 
 /**
-* Common API Functions
-*/
+ * Common API Functions
+ */
 trait CommonTrait
 {
 	/**
-	* isResourceAvailable
-	*
-	* @param string $uri - URI to endpoint to query
-	* @return see Client::sendRequest
-	*/
+	 * isResourceAvailable
+	 *
+	 * @param string $uri - URI to endpoint to query
+	 * @return \Spliced\SurveyMonkey\Response
+	 */
 	public function isResourceAvailable($uri)
 	{
 		return $this->sendRequest(
@@ -31,16 +31,15 @@ trait CommonTrait
 	}
 
 	/**
-	* isResourceAvailable
-	*
-	* @param string $uri - URI to endpoint to query
-	* @return see Client::sendRequest
-	*/
+	 * isResourceAvailable
+	 *
+	 * @param string $uri - URI to endpoint to query
+	 * @return \Spliced\SurveyMonkey\Response
+	 */
 	public function getResourceOptions($uri)
 	{
 		return $this->sendRequest(
 			$this->createRequest('OPTIONS', $uri)
 		);
 	}
-
 }

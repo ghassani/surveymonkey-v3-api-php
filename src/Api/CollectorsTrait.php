@@ -13,20 +13,22 @@
 namespace Spliced\SurveyMonkey\Api;
 
 /**
-* Collector API Functions
-*
-* @see https://developer.surveymonkey.com/api/v3/#collectors-and-invite-messages
-*/
+ * Collector API Functions
+ *
+ * @see https://developer.surveymonkey.com/api/v3/#collectors-and-invite-messages
+ */
 trait CollectorsTrait
 {
 	/**
-	* getCollectorsForSurvey
-	*
-	* @param int $surveyId
-	* @param array $filters - Available filters: page, per_page, sort_by, sort_order, name, start_date, end_date, include
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getCollectorsForSurvey
+	 *
+	 * @param $surveyId
+	 * @param $filters - Available filters: page, per_page, sort_by, sort_order, name, start_date, end_date, include
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#surveys-id-collectors
+	 */
 	public function getCollectorsForSurvey($surveyId, array $filters = [])
 	{
 		return $this->sendRequest(
@@ -37,13 +39,15 @@ trait CollectorsTrait
 	}
 
 	/**
-	* createCollectorForSurvey
-	*
-	* @param int $surveyId
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * createCollectorForSurvey
+	 *
+	 * @param $surveyId
+	 * @param $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#surveys-id-collectors
+	 */
 	public function createCollectorForSurvey($surveyId, array $data = [])
 	{
 		return $this->sendRequest(
@@ -52,12 +56,14 @@ trait CollectorsTrait
 	}
 
 	/**
-	* getCollector
-	*
-	* @param int $collectorId
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getCollector
+	 *
+	 * @param $collectorId
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id
+	 */
 	public function getCollector($collectorId)
 	{
 		return $this->sendRequest(
@@ -66,13 +72,15 @@ trait CollectorsTrait
 	}
 
 	/**
-	* updateCollector
-	*
-	* @param int $collectorId
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * updateCollector
+	 *
+	 * @param $collectorId
+	 * @param $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id
+	 */
 	public function updateCollector($collectorId, array $data = [])
 	{
 		return $this->sendRequest(
@@ -81,13 +89,15 @@ trait CollectorsTrait
 	}
 
 	/**
-	* replaceCollector
-	*
-	* @param int $collectorId
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * replaceCollector
+	 *
+	 * @param $collectorId
+	 * @param $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id
+	 */
 	public function replaceCollector($collectorId, array $data = [])
 	{
 		return $this->sendRequest(
@@ -96,12 +106,14 @@ trait CollectorsTrait
 	}
 
 	/**
-	* deleteCollector
-	*
-	* @param int $collectorId
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * deleteCollector
+	 *
+	 * @param $collectorId
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id
+	 */
 	public function deleteCollector($collectorId)
 	{
 		return $this->sendRequest(
@@ -110,13 +122,15 @@ trait CollectorsTrait
 	}
 
 	/**
-	* getCollectorMessages
-	*
-	* @param int $collectorId
-	* @param array $filters - Available filters: page, per_page
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getCollectorMessages
+	 *
+	 * @param $collectorId
+	 * @param $filters - Available filters: page, per_page
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages
+	 */
 	public function getCollectorMessages($collectorId, array $filters = [])
 	{
 		return $this->sendRequest(
@@ -127,13 +141,15 @@ trait CollectorsTrait
 	}
 
 	/**
-	* createCollectorMessage
-	*
-	* @param int $collectorId
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * createCollectorMessage
+	 *
+	 * @param $collectorId
+	 * @param $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages
+	 */
 	public function createCollectorMessage($collectorId, array $data = [])
 	{
 		return $this->sendRequest(
@@ -142,14 +158,17 @@ trait CollectorsTrait
 	}
 
 	/**
-	* copyCollectorMessage
-	*
-	* @param int $fromCollectorId
-	* @param int $fromMessageId
-	* @param bool $includeRecipients
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * copyCollectorMessage
+	 *
+     * @param $collectorId
+     * @param $fromCollectorId
+	 * @param $fromMessageId
+	 * @param $includeRecipients
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages
+	 */
 	public function copyCollectorMessage($collectorId, $fromCollectorId, $fromMessageId, $includeRecipients = false)
 	{
 		return $this->sendRequest(
@@ -164,13 +183,15 @@ trait CollectorsTrait
 	}
 
 	/**
-	* getCollectorMessage
-	*
-	* @param int $collectorId
-	* @param int $messageId
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getCollectorMessage
+	 *
+	 * @param $collectorId
+	 * @param $messageId
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages-id
+	 */
 	public function getCollectorMessage($collectorId, $messageId)
 	{
 		return $this->sendRequest(
@@ -179,14 +200,16 @@ trait CollectorsTrait
 	}
 
 	/**
-	* updateCollectorMessage
-	*
-	* @param int $collectorId
-	* @param int $messageId
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * updateCollectorMessage
+	 *
+	 * @param $collectorId
+	 * @param $messageId
+	 * @param $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages-id
+	 */
 	public function updateCollectorMessage($collectorId, $messageId, array $data = [])
 	{
 		return $this->sendRequest(
@@ -195,14 +218,16 @@ trait CollectorsTrait
 	}
 
 	/**
-	* replaceCollectorMessage
-	*
-	* @param int $collectorId
-	* @param int $messageId
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * replaceCollectorMessage
+	 *
+	 * @param $collectorId
+	 * @param $messageId
+	 * @param $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages-id
+	 */
 	public function replaceCollectorMessage($collectorId, $messageId, array $data = [])
 	{
 		return $this->sendRequest(
@@ -211,13 +236,15 @@ trait CollectorsTrait
 	}
 
 	/**
-	* deleteCollectorMessage
-	*
-	* @param int $collectorId
-	* @param int $messageId
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * deleteCollectorMessage
+	 *
+	 * @param $collectorId
+	 * @param $messageId
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages-id
+	 */
 	public function deleteCollectorMessage($collectorId, $messageId)
 	{
 		return $this->sendRequest(
@@ -226,14 +253,16 @@ trait CollectorsTrait
 	}
 
 	/**
-	* sendCollectorMessage
-	*
-	* @param int $collectorId
-	* @param int $messageId
-	* @param DateTime|null $scheduledDate
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * sendCollectorMessage
+	 *
+	 * @param $collectorId
+	 * @param $messageId
+	 * @param \DateTime|null $scheduledDate
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages-id-send
+	 */
 	public function sendCollectorMessage($collectorId, $messageId, \DateTime $scheduledDate = null)
 	{
 		$data = $scheduledDate ? [ 'scheduled_date' => $scheduledDate->format(DATE_ATOM) ] : [];
@@ -244,14 +273,16 @@ trait CollectorsTrait
 	}
 
 	/**
-	* getCollectorMessageRecipients
-	*
-	* @param int $collectorId
-	* @param int $messageId
-	* @param array $filters - Available filters: page, per_page
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getCollectorMessageRecipients
+	 *
+	 * @param $collectorId
+	 * @param $messageId
+	 * @param $filters - Available filters: page, per_page
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages-id-recipients
+	 */
 	public function getCollectorMessageRecipients($collectorId, $messageId, array $filters = [])
 	{
 		return $this->sendRequest(
@@ -261,17 +292,17 @@ trait CollectorsTrait
 		);
 	}
 
-
 	/**
-	* createCollectorMessageRecipient
-	*
-	* @param int $collectorId
-	* @param int $messageId
-	* @param array $data - See API docs for available fields
-	* @link https://developer.surveymonkey.com/api/v3/#collectors-id-messages-id-recipients Documentation for creating recipient
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * createCollectorMessageRecipient
+	 *
+	 * @param $collectorId
+	 * @param $messageId
+	 * @param $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages-id-recipients
+	 */
 	public function createCollectorMessageRecipient($collectorId, $messageId, array $data = [])
 	{
 		return $this->sendRequest(
@@ -280,15 +311,16 @@ trait CollectorsTrait
 	}
 	
 	/**
-	* createCollectorMessageRecipientBulk
-	*
-	* @param int $collectorId
-	* @param int $messageId
-	* @param array $data - See API docs for available fields
-	* @link https://developer.surveymonkey.net/api/v3/#collectors-id-messages-id-recipients-bulk Documentation for creating recipients in bulk
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * createCollectorMessageRecipientBulk
+	 *
+	 * @param int $collectorId
+	 * @param int $messageId
+	 * @param array $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages-id-recipients-bulk
+	 */
 	public function createCollectorMessageRecipientBulk($collectorId, $messageId, $data = [])
 	{
 		return $this->sendRequest(
@@ -297,13 +329,15 @@ trait CollectorsTrait
 	}
 
 	/**
-	* getCollectorRecipients
-	*
-	* @param int $collectorId
-	* @param array $filters - Available filters: page, per_page
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getCollectorRecipients
+	 *
+	 * @param int $collectorId
+	 * @param array $filters - Available filters: page, per_page
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-recipients
+	 */
 	public function getCollectorRecipients($collectorId, array $filters = [])
 	{
 		return $this->sendRequest(
@@ -314,13 +348,15 @@ trait CollectorsTrait
 	}
 
 	/**
-	* getCollectorRecipient
-	*
-	* @param int $collectorId
-	* @param int $recipientId
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getCollectorRecipient
+	 *
+	 * @param int $collectorId
+	 * @param int $recipientId
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-recipients-id
+	 */
 	public function getCollectorRecipient($collectorId, $recipientId)
 	{
 		return $this->sendRequest(
@@ -329,17 +365,52 @@ trait CollectorsTrait
 	}
 
 	/**
-	* deleteCollectorRecipient
-	*
-	* @param int $collectorId
-	* @param int $recipientId
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * deleteCollectorRecipient
+	 *
+	 * @param int $collectorId
+	 * @param int $recipientId
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-recipients-id
+	 */
 	public function deleteCollectorRecipient($collectorId, $recipientId)
 	{
 		return $this->sendRequest(
 			$this->createRequest('DELETE', sprintf('collectors/%s/recipients/%s', $collectorId,  $recipientId))
 		);
 	}
+
+    /**
+     * getCollectorStats
+     *
+     * @param int $collectorId
+     *
+     * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-stats
+     */
+	public function getCollectorStats($collectorId)
+    {
+        return $this->sendRequest(
+            $this->createRequest('GET', sprintf('collectors/%s/stats', $collectorId))
+        );
+    }
+
+    /**
+     * getCollectorMessageStats
+     *
+     * @param int $collectorId
+     * @param int $messageId
+     *
+     * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages-id-stats
+     */
+    public function getCollectorMessageStats($collectorId, $messageId)
+    {
+        return $this->sendRequest(
+            $this->createRequest('GET', sprintf('collectors/%s/messages/%s/stats', $collectorId, $messageId))
+        );
+    }
 }

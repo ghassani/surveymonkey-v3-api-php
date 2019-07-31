@@ -1,0 +1,30 @@
+v1.1:
+    - Added support for the following API endpoints:
+        /survey_languages
+        /question_bank/questions
+        /survey_folders
+        /users/{id}/workgroups
+        /users/{id}/shared
+        /surveys/{survey_id}/languages
+        /surveys/{survey_id}/languages/{language_code}
+        /contacts/bulk
+        /collectors/{id}/stats
+        /collectors/{id}/messages/{id}/stats
+        /surveys/{id}/rollups
+        /surveys/{id}/pages/{id}/rollups
+        /surveys/{id}/pages/{id}/questions/{id}/rollups
+        /surveys/{id}/trends
+        /surveys/{id}/pages/{id}/trends
+        /surveys/{id}/pages/{id}/questions/{id}/trends
+        /workgroups
+        /workgroups/{workgroup_id}
+        /workgroups/{workgroup_id}/members
+        /workgroups/{workgroup_id}/members/bulk
+        /workgroups/{workgroup_id}/members/{member_id}
+        /workgroups/{workgroup_id}/shares
+        /workgroups/{workgroup_id}/shares/bulk
+        /workgroups/{workgroup_id}/shares/{share_id}
+        /roles
+    - Split of detailed and added bulk methods for responses
+    - Fixed passing query strings into header fields in Client::createRequest
+    - Fixed invalid variable referencei n BenchmarkTrait::analyzeSurveyQuestions

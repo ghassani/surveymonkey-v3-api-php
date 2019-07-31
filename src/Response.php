@@ -44,40 +44,40 @@ class Response
 	}
 
 	/**
-	* getRequestObject
-	*
-	* @return RequestInterface
-	*/
+	 * getRequestObject
+	 *
+	 * @return RequestInterface
+	 */
 	public function getRequestObject()
 	{
 		return $this->response;
 	}
 
 	/**
-	* getResponseObject
-	*
-	* @return ResponseInterface
-	*/
+	 * getResponseObject
+	 *
+	 * @return ResponseInterface
+	 */
 	public function getResponseObject()
 	{
 		return $this->response;
 	}
 
 	/**
-	* getData
-	*
-	* @return mixed
-	*/
+	 * getData
+	 *
+	 * @return mixed
+	 */
 	public function getData()
 	{
 		return $this->data;
 	}
 
 	/**
-	* isSuccess
-	*
-	* @return bool
-	*/
+	 * isSuccess
+	 *
+	 * @return bool
+	 */
 	public function isSuccess()
 	{
 		$data = $this->getData();
@@ -94,20 +94,20 @@ class Response
 	}
 
 	/**
-	* isError
-	*
-	* @return bool
-	*/
+	 * isError
+	 *
+	 * @return bool
+	 */
 	public function isError()
 	{
 		return !$this->isSuccess();
 	}
 
 	/**
-	* getError
-	*
-	* @return array
-	*/
+	 * getError
+	 *
+	 * @return array
+	 */
 	public function getError()
 	{
 		if ($this->isSuccess()) {

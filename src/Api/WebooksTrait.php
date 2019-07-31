@@ -13,19 +13,21 @@
 namespace Spliced\SurveyMonkey\Api;
 
 /**
-* Webhook API Functions
-*
-* @see https://developer.surveymonkey.com/api/v3/#webhooks
-*/
+ * Webhook API Functions
+ *
+ * @see https://developer.surveymonkey.com/api/v3/#webhooks
+ */
 trait WebooksTrait
 {
 	/**
-	* getWebhooks
-	*
-	* @param array $filters - Available filters: page, per_page
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getWebhooks
+	 *
+	 * @param array $filters - Available filters: page, per_page
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#webhooks
+	 */
 	public function getWebhooks(array $filters = [])
 	{
 		return $this->sendRequest(
@@ -35,14 +37,15 @@ trait WebooksTrait
 		);
 	}
 
-
 	/**
-	* createWebhook
-	*
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * createWebhook
+	 *
+	 * @param array $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#webhooks
+	 */
 	public function createWebhook(array $data = [])
 	{
 		return $this->sendRequest(
@@ -51,12 +54,14 @@ trait WebooksTrait
 	}
 
 	/**
-	* getWebhook
-	*
-	* @param int $webhookId
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getWebhook
+	 *
+	 * @param int $webhookId
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#webhooks-id
+	 */
 	public function getWebhook($webhookId)
 	{
 		return $this->sendRequest(
@@ -64,15 +69,16 @@ trait WebooksTrait
 		);
 	}
 
-
 	/**
-	* updateWebhook
-	*
-	* @param int $webhookId
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * updateWebhook
+	 *
+	 * @param int $webhookId
+	 * @param array $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#webhooks-id
+	 */
 	public function updateWebhook($webhookId, array $data = [])
 	{
 		return $this->sendRequest(
@@ -80,15 +86,16 @@ trait WebooksTrait
 		);
 	}
 
-
 	/**
-	* replaceWebhook
-	*
-	* @param int $webhookId
-	* @param array $data - See API docs for available fields
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * replaceWebhook
+	 *
+	 * @param int $webhookId
+	 * @param array $data - See API docs for available fields
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#webhooks-id
+	 */
 	public function replaceWebhook($webhookId, array $data = [])
 	{
 		return $this->sendRequest(
@@ -97,12 +104,14 @@ trait WebooksTrait
 	}
 
 	/**
-	* deleteWebhook
-	*
-	* @param int $webhookId
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * deleteWebhook
+	 *
+	 * @param int $webhookId
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#webhooks-id
+	 */
 	public function deleteWebhook($webhookId)
 	{
 		return $this->sendRequest(

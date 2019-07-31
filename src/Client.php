@@ -44,7 +44,18 @@ class Client
     use Api\WebooksTrait;
     use Api\BenchmarkTrait;
     use Api\ErrorsTrait;
+    use Api\QuestionBankTrait;
+    use Api\SurveyFoldersTrait;
+    use Api\TranslationsTrait;
+    use Api\ResponseCountsAndTrendsTrait;
+    use Api\OrganizationsTrait;
 
+    /**
+     * Client constructor.
+     *
+     * @param $apiKey
+     * @param $accessToken
+     */
     public function __construct($apiKey, $accessToken)
     {
         $this->apiKey = $apiKey;
@@ -148,7 +159,7 @@ class Client
             $bodyString = json_encode($body);
         }
 
-        $ret = new Request($method, $uri, $options, $bodyString);
+        $ret = new Request($method, $uri, [], $bodyString);
 
         if (isset($options['query'])) {
             $uri = $ret->getUri()->withQuery(is_array($options['query']) ? http_build_query($options['query']) : $options['query']);

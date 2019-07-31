@@ -1,6 +1,5 @@
-phpunit.xml
-vendor
-composer.lock
-authenticator/creds.php
-
-.idea/
+/phpunit.xml
+/vendor/
+/composer.lock
+/authenticator/creds.php
+/.idea/

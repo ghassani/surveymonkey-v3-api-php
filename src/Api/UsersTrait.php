@@ -13,18 +13,19 @@
 namespace Spliced\SurveyMonkey\Api;
 
 /**
-* User API Functions
-*
-* @see https://developer.surveymonkey.com/api/v3/#users-and-groups
-*/
+ * User API Functions
+ *
+ * @see https://developer.surveymonkey.com/api/v3/#users-and-groups
+ */
 trait UsersTrait
 {
-
 	/**
-	* getUser - Gets the current user information
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getUser - Gets the current user information
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#users-me
+	 */
 	public function getUser()
 	{
 		return $this->sendRequest(
@@ -32,13 +33,53 @@ trait UsersTrait
 		);
 	}
 
+    /**
+     * getUserShared - Returns the resources shared with a user across all workgroups
+     *
+     * @param int $userId
+     * @param array $filters - Available filters: page, per_page, resource_type, resource_id, include
+     *
+     * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#users-id-shared
+     */
+    public function getUserShared($userId, array $filters = [])
+    {
+        return $this->sendRequest(
+            $this->createRequest('GET', sprintf('/users/%s/shared', $userId), [
+                'query' => $filters
+            ])
+        );
+    }
+
+    /**
+     * getUserShared - Returns the workgroups that a specific user is in
+     *
+     * @param int $userId
+     * @param array $filters - Available filters: page, per_page
+     *
+     * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#users-id-workgroups
+     */
+    public function getUserWorkgroups($userId, array $filters = [])
+    {
+        return $this->sendRequest(
+            $this->createRequest('GET', sprintf('/users/%s/workgroups', $userId), [
+                'query' => $filters
+            ])
+        );
+    }
+
 	/**
-	* getGroups - Gets all user groups
-	*
-	* @param array $filters - Available filters: page, per_page
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getGroups - Gets all user groups
+	 *
+	 * @param array $filters - Available filters: page, per_page
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#groups
+	 */
 	public function getGroups(array $filters = [])
 	{
 		return $this->sendRequest(
@@ -49,12 +90,14 @@ trait UsersTrait
 	}
 
 	/**
-	* getGroup - Gets a single user group resource
-	*
-	* @param int $groupId - The ID of the group to get information on
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getGroup - Gets a single user group resource
+	 *
+	 * @param int $groupId - The ID of the group to get information on
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#groups-id
+	 */
 	public function getGroup($groupId)
 	{
 		return $this->sendRequest(
@@ -63,13 +106,15 @@ trait UsersTrait
 	}
 
 	/**
-	* getGroupMembers - Gets members associated for a specific group
-	*
-	* @param int $groupId - The ID of the group to get information on
-	* @param array $filters - Available filters: page, per_page
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getGroupMembers - Gets members associated for a specific group
+	 *
+	 * @param int $groupId - The ID of the group to get information on
+	 * @param array $filters - Available filters: page, per_page
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#groups-id-members
+	 */
 	public function getGroupMembers($groupId,  array $filters = [])
 	{
 		return $this->sendRequest(
@@ -80,13 +125,15 @@ trait UsersTrait
 	}
 
 	/**
-	* getGroupMembers - Gets a specific member information for a specific group
-	*
-	* @param int $groupId - The ID of the group to get information on
-	* @param int $memberId - The ID of the member in the group to get information on
-	*
-	* @return @see Client::sendRequest
-	*/
+	 * getGroupMember - Gets a specific member information for a specific group
+	 *
+	 * @param int $groupId - The ID of the group to get information on
+	 * @param int $memberId - The ID of the member in the group to get information on
+	 *
+	 * @return \Spliced\SurveyMonkey\Response
+     *
+     * @see https://developer.surveymonkey.com/api/v3/#groups-id-members-id
+	 */
 	public function getGroupMember($groupId, $memberId)
 	{
 		return $this->sendRequest(
