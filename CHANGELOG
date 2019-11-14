@@ -1,4 +1,4 @@
-v1.1:
+v1.1.0:
     - Added support for the following API endpoints:
         /survey_languages
         /question_bank/questions
