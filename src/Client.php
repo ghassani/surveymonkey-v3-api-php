@@ -159,7 +159,7 @@ class Client
         $ret = new Request($method, $uri, []);
 
         if (is_array($body)) {
-            $bodyString = json_encode($body);
+            $ret = new Request($method, $uri, [], json_encode($body));
         }
 
         if (isset($options['query'])) {
