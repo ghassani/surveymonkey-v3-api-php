@@ -152,9 +152,10 @@ class Client
     private function createRequest($method, $uri, array $options = [], $body = null)
     {
         if (empty($body)) {
-            // Empty arrays and NULL data inputs both need casting to an empty JSON object.
-            // See https://stackoverflow.com/a/41150809/2803757
-            $bodyString = '{}';
+            // Survey Monkey moved to CloudFront on 2020-05-23
+            // CloudFront issues 403 Forbidden with empty json body
+            // Previously this was set to an empty json object string. See https://stackoverflow.com/a/41150809/2803757
+            $bodyString = null;
         } elseif (is_array($body)) {
             $bodyString = json_encode($body);
         }
