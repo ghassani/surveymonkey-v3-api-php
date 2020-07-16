@@ -172,12 +172,10 @@ trait CollectorsTrait
 	public function copyCollectorMessage($collectorId, $fromCollectorId, $fromMessageId, $includeRecipients = false)
 	{
 		return $this->sendRequest(
-			$this->createRequest('POST', sprintf('collectors/%s/messages', $collectorId), [
-				'query' => [
-					'from_collector_id'  => $fromCollectorId,
-					'from_message_id' 	 => $fromMessageId,
-					'include_recipients' => (bool)$includeRecipients,
-				]
+			$this->createRequest('POST', sprintf('collectors/%s/messages', $collectorId), [], [
+                		'from_collector_id'  => (string)$fromCollectorId,
+                		'from_message_id'    => (string)$fromMessageId,
+                		'include_recipients' => (bool)$includeRecipients,
 			])
 		);
 	}
