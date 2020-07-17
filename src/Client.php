@@ -156,7 +156,7 @@ class Client
             // CloudFront issues 403 Forbidden with empty json body
             // Previously this was set to an empty json object string. See https://stackoverflow.com/a/41150809/2803757
             $bodyString = null;
-        } elseif (is_array($body)) {
+        } elseif (is_array($body) || $body instanceof \stdClass) {
             $bodyString = json_encode($body);
         }
 
