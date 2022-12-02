@@ -3,3 +3,4 @@
 /composer.lock
 /authenticator/creds.php
 /.idea/
+/.phpunit.result.cache
