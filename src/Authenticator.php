@@ -35,7 +35,7 @@ class Authenticator
 	/** @const string */
 	const OAUTH_ENDPOINT = 'https://api.surveymonkey.net/oauth/';
 
-	/** @var GuzzleHttp\Client */
+	/** @var HttpClient */
 	protected $httpClient;
 
 	/** @var string */
@@ -49,8 +49,6 @@ class Authenticator
 
 	/**
 	 * Constructor
-	 *
-	 * @return Client
 	 */
 	public function __construct($clientId, $clientSecret, $redirectUri)
 	{
@@ -70,7 +68,7 @@ class Authenticator
 	 *
 	 * @param string $clientId
 	 *
-	 * @return Client
+	 * @return Authenticator
 	 */
 	public function setClientId($clientId)
 	{
@@ -93,7 +91,7 @@ class Authenticator
 	 *
 	 * @param string $clientSecret
 	 *
-	 * @return Client
+	 * @return Authenticator
 	 */
 	public function setClientSecret($clientSecret)
 	{
@@ -116,7 +114,7 @@ class Authenticator
 	 *
 	 * @param string $redirectUri
 	 *
-	 * @return Client
+	 * @return Authenticator
 	 */
 	public function setRedirectUri($redirectUri)
 	{
@@ -137,7 +135,7 @@ class Authenticator
 	/**
 	 * getHttpClient
 	 *
-	 * @return \GuzzleHttp\Client
+	 * @return HttpClient
 	 */
 	public function getHttpClient()
 	{
@@ -159,13 +157,14 @@ class Authenticator
 		]));
 	}
 
-	/**
-	 * getToken
-	 *
-	 * @param string $code - Code received from redirect from SurveyMonkey after pointing the user to getAuthorizeUrl()
-	 *
-	 * @return array
-	 */
+    /**
+     * getToken
+     *
+     * @param string $code - Code received from redirect from SurveyMonkey after pointing the user to getAuthorizeUrl()
+     *
+     * @return array
+     * @throws SurveyMonkeyApiException
+     */
 	public function getToken($code)
 	{
 		$request = 	new Request('POST', 'token', [], http_build_query([
@@ -178,9 +177,11 @@ class Authenticator
 
 		try {
 			$response = $this->getHttpClient()->send($request);
-		} catch (\Exception $e) {
+		} catch (GuzzleException $e) {
 			throw new SurveyMonkeyApiException($e->getMessage(), $e->getCode(), $e);
-		}
+		} catch (\Exception $e) {
+            throw new SurveyMonkeyApiException($e->getMessage(), $e->getCode(), $e);
+        }
 
         if (!$response->hasHeader('content-type') || !preg_match('/application\/json/i', $response->getHeader('content-type')[0])) {
 			throw new SurveyMonkeyApiException(sprintf('Response expected to be a JSON response. Received %s', $response->getHeader('content-type')[0]));

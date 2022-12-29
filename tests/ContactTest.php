@@ -35,6 +35,9 @@ class ContactTest extends BaseTest
 
 		$newContactListData = $createContactListResponse->getData();
 
+        $this->assertEmpty($newContactListData['error'], 'API Error: '
+            . $newContactListData['error']['name'] . ': ' . $newContactListData['error']['message'] . '.');
+
 		$this->isType('array', $newContactListData);
 		$this->arrayHasKey('id',  $newContactListData);		
 		$this->arrayHasKey('name',$newContactListData);
@@ -47,6 +50,9 @@ class ContactTest extends BaseTest
 		);
 
 		$updateContactListData = $updateContactListResponse->getData();
+
+        $this->assertEmpty($updateContactListData['error'], 'API Error: '
+            . $updateContactListData['error']['name'] . ': ' . $updateContactListData['error']['message'] . '.');
 
 		$this->isType('array', $updateContactListData);
 		$this->arrayHasKey('id',  $updateContactListData);		
@@ -62,6 +68,9 @@ class ContactTest extends BaseTest
 
 		$replaceContactListData = $replaceContactListResponse->getData();
 
+        $this->assertEmpty($replaceContactListData['error'], 'API Error: '
+            . $replaceContactListData['error']['name'] . ': ' . $replaceContactListData['error']['message'] . '.');
+
 		$this->isType('array', $replaceContactListData);
 		$this->arrayHasKey('id',  $replaceContactListData);		
 		$this->arrayHasKey('name',$replaceContactListData);
@@ -72,6 +81,9 @@ class ContactTest extends BaseTest
 		$deleteContactListResponse = $this->client->deleteContactList($newContactListData['id']);
 		
 		$deleteContactListData = $deleteContactListResponse->getData();
+
+        $this->assertEmpty($deleteContactListData['error'], 'API Error: '
+            . $deleteContactListData['error']['name'] . ': ' . $deleteContactListData['error']['message'] . '.');
 
 		$this->isType('array', $deleteContactListData);
 		$this->arrayHasKey('id',  $deleteContactListData);		

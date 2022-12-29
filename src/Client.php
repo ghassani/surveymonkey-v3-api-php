@@ -121,7 +121,7 @@ class Client
     }
 
     /**
-     * @param RequestInterface
+     * @param RequestInterface $request
      * @return Response
      * @throws SurveyMonkeyApiException if we got an error response from SurveyMonkey
      * @throws \GuzzleHttp\Exception\GuzzleException on unexpected HTTP errors
